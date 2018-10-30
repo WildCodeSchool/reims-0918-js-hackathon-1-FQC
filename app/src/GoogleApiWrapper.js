@@ -7,10 +7,23 @@ const style = {
   height: "100%"
 };
 
+function maPosition(position) {
+  var infopos = "Position déterminée :\n";
+  infopos += "Latitude : " + position.coords.latitude + "\n";
+  infopos += "Longitude: " + position.coords.longitude + "\n";
+  infopos += "Altitude : " + position.coords.altitude + "\n";
+  console.log(infopos)
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(maPosition);
+}
+
 export class MapContainer extends Component {
   render() {
     return (
       <div>
+        <div id="infoposition"></div>
         <Map
           google={this.props.google}
           style={style}
