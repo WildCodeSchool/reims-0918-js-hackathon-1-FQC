@@ -2,22 +2,21 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import CandyList from "./CandyList";
-import { fetchCandys } from "./api/Candys";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      candysList: null
+      candysList: []
     };
   }
   componentDidMount() {
-    fetchCandys()
-      .then(response => {
-        return this.setState({ candysList: response.data });
-      })
-      .catch(e => {
-        console.log("error", e);
+    fetch(`https://fr-en.openfoodfacts.org/category/bonbons.json`)
+      .then(results => results.json())
+      .then(data => {
+        this.setState({
+          candysList: [...this.state.candysList, data.products]
+        });
       });
   }
 
@@ -25,7 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <CandyList list={this.state.candysList}/>
+          <CandyList list={this.state.candysList} />
         </header>
       </div>
     );
