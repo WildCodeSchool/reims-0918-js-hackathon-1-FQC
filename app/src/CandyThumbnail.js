@@ -6,14 +6,13 @@ import {
   CardTitle
 } from "reactstrap";
 
-const CandyThumbnail = ({ candy, generic_name_fr }) => {
+const CandyThumbnail = ({ selected_images, product_name }) => {
   return (
     <div>
       <Card>
-          
-        <CardImg src={candy} alt="Card image cap" />
+        <CardImg src={selected_images.front.small.fr} alt="Card image cap" />
         <CardBody>
-            <CardTitle>{generic_name_fr}</CardTitle>
+            <CardTitle>{product_name}</CardTitle>
         </CardBody>
       </Card>
     </div>

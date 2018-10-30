@@ -15,7 +15,7 @@ class App extends Component {
       .then(results => results.json())
       .then(data => {
         this.setState({
-          candysList: [...this.state.candysList, data.products]
+          candysList: data.products
         });
       });
   }

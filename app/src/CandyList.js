@@ -7,7 +7,7 @@ const CandyList = ({ list }) => {
     <div>
       <CardColumns> 
         {list.map(candy => (
-          <CandyThumbnail candy={candy.selected_images.front.display.fr} />
+          <CandyThumbnail {...candy}/>
         ))}
       </CardColumns>
     </div>
