@@ -9,12 +9,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      candysList: [],
       currentPage: false
     };
     this.handleDisplayMap = this.handleDisplayMap.bind(this);
   }
   handleDisplayMap() {
     this.setState({ currentPage: true });
+  }
+
+  componentDidMount() {
+    fetch(`https://fr-en.openfoodfacts.org/category/bonbons.json`)
+      .then(results => results.json())
+      .then(data => {
+        this.setState({
+          candysList: data.products
+        });
+      });
   }
 
   render() {
