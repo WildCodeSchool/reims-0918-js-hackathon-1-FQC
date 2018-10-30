@@ -1,7 +1,11 @@
-# Treat or Coding
+# NOM A DEFINIR
 
 ## TEAM
 
-- NIVEAU Benoît
-- RAYMOND Fabien
-- SIMONIN Gautier
+- CREPIN Charles
+- DA SILVA Quentin
+- COYARD Florentin
+
+## How to simulate geolocation
+
+https://www.labnol.org/internet/geo-location/27878/
