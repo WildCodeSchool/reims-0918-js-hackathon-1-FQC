@@ -17,27 +17,38 @@ class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       latitude: "",
-      longitude: ""
+      longitude: "",
+      MapLatitude: "",
+      MapLongitude: ""
     }
     this.getLatitude = this.getLatitude.bind(this);
   }
+
   componentDidMount() {
     navigator.geolocation.watchPosition(this.getLatitude)
+
   }
+
 
   getLatitude = (position) => {
     this.setState({
       latitude: position.coords.latitude,
+      MapLatitude: this.state.latitude,
+      MapLongitude: this.state.longitude,
       longitude: position.coords.longitude
     })
   }
 
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
+    console.log(props.map.center)
     this.setState({
+      MapLatitude: props.map.center.lat(),
+      MapLongitude: props.map.center.lng(),
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
-    });
+    })
+  };
 
   onMapClicked = props => {
     if (this.state.showingInfoWindow) {
@@ -48,6 +59,10 @@ class MapContainer extends Component {
     }
   }
 
+
+
+
+
   render() {
     return (
       <div>
@@ -56,8 +71,8 @@ class MapContainer extends Component {
           google={this.props.google}
           style={style}
           center={{
-            lat: this.state.latitude,
-            lng: this.state.longitude
+            lat: this.state.MapLatitude,
+            lng: this.state.MapLongitude
           }}
           zoom={15}
           onClick={this.onMapClicked}
@@ -76,6 +91,10 @@ class MapContainer extends Component {
             name={"Gare de Reims"}
             adresse={"Place de la gare"}
             onClick={this.onMarkerClick}
+            mapCenter={{
+              lat: this.state.latitude,
+              lng: this.state.longitude
+            }}
             position={{ lat: 49.258919, lng: 4.024525 }}
             icon={{
               url: "./img/candy.png",
