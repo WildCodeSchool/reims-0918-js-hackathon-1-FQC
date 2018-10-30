@@ -115,10 +115,7 @@ class App extends Component {
               src="http://www.scandiafun.com/images/spiderweb-corner-right.png"
             />
 
-            <a
-              className="toto"
-              onClick={() => this.handleDisplayMap(this.state.currentPage)}
-            >
+            <a onClick={() => this.handleDisplayMap(this.state.currentPage)}>
               <h1>
                 WILD CANDY HUNT
                 <br />
