@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from "reactstrap";
 import "./App.css";
 import "./BackgroundAnimate.css";
 import GoogleApiWrapper from "./GoogleApiWrapper";
+import Inventaire from "./inventaire";
 
 class App extends Component {
   constructor(props) {
@@ -116,7 +118,16 @@ class App extends Component {
         )}
         {this.state.currentPage && (
           <div className="App">
-            <GoogleApiWrapper />
+            <Container fluid>
+              <Row style={{ height: "100vh" }}>
+                <Col xs="9" style={{ paddingLeft: "0" }}>
+                  <GoogleApiWrapper />
+                </Col>
+                <Col xs="3">
+                  <Inventaire />
+                </Col>
+              </Row>
+            </Container>
           </div>
         )}
       </body>
