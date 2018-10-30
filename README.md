@@ -10,6 +10,6 @@
 
 https://www.labnol.org/internet/geo-location/27878/
 
-## How to add a Google map with React
+## How to add a Google map with React ( optionnel )
 
 https://medium.com/@morgannegagne/google-maps-with-react-951c12b723ad
