@@ -3,7 +3,7 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import Inventaire from "./inventaire";
 
 const style = {
-  width: "80%",
+  width: "100%",
   height: "100%"
 };
 
@@ -26,7 +26,7 @@ export class MapContainer extends Component {
             name={"Current location"}
             icon={{
               url: "./img/pumpkin.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
@@ -35,7 +35,7 @@ export class MapContainer extends Component {
             position={{ lat: 49.258919, lng: 4.024525 }}
             icon={{
               url: "./img/candy.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
@@ -44,7 +44,7 @@ export class MapContainer extends Component {
             position={{ lat: 49.253878, lng: 4.034093 }}
             icon={{
               url: "./img/candy.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
@@ -53,7 +53,7 @@ export class MapContainer extends Component {
             position={{ lat: 49.258175, lng: 4.032134 }}
             icon={{
               url: "./img/candy.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
@@ -62,7 +62,7 @@ export class MapContainer extends Component {
             position={{ lat: 49.255585, lng: 4.034319 }}
             icon={{
               url: "./img/candy.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
@@ -71,7 +71,7 @@ export class MapContainer extends Component {
             position={{ lat: 49.255147, lng: 4.027244 }}
             icon={{
               url: "./img/candy.png",
-              anchor: new this.props.google.maps.Point(60, 60),
+              anchor: new this.props.google.maps.Point(10, 10),
               scaledSize: new this.props.google.maps.Size(60, 60)
             }}
           />
