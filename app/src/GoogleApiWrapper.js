@@ -7,29 +7,43 @@ const style = {
   height: "100%"
 };
 
-function maPosition(position) {
-  var infopos = "Position déterminée :\n";
-  infopos += "Latitude : " + position.coords.latitude + "\n";
-  infopos += "Longitude: " + position.coords.longitude + "\n";
-  infopos += "Altitude : " + position.coords.altitude + "\n";
-  console.log(infopos)
-}
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(maPosition);
-}
+class MapContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      latitude: "",
+      longitude: ""
+    }
+    this.getLatitude = this.getLatitude.bind(this);
+  }
+  componentDidMount() {
+    navigator.geolocation.watchPosition(this.getLatitude)
+  }
 
-export class MapContainer extends Component {
+  getLatitude = (position) => {
+    this.setState({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    })
+    console.log(position.coords.longitude)
+  }
+
+
+
+
+
   render() {
     return (
       <div>
-        <div id="infoposition"></div>
+        <button onClick={() => navigator.geolocation.watchPosition(this.getLatitude)}>ACTUALISER</button>
+
         <Map
           google={this.props.google}
           style={style}
-          initialCenter={{
-            lat: 49.256983,
-            lng: 4.019755
+          center={{
+            lat: this.state.latitude,
+            lng: this.state.longitude
           }}
           zoom={15}
           onClick={this.onMapClicked}
@@ -37,6 +51,8 @@ export class MapContainer extends Component {
           <Marker
             onClick={this.onMarkerClick}
             name={"Current location"}
+
+            position={{ lat: this.state.latitude, lng: this.state.longitude }}
             icon={{
               url: "./img/pumpkin.png",
               anchor: new this.props.google.maps.Point(10, 10),

@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
+      <div className="App" >
         <Container fluid>
           <Row style={{ height: "100vh" }}>
             <Col xs="9" style={{ paddingLeft: "0" }}>
