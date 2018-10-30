@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import './App.css';
+import GoogleApiWrapper from "./GoogleApiWrapper"
 import CandyList from "./CandyList";
 
 class App extends Component {
@@ -23,9 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <CandyList list={this.state.candysList} />
-        </header>
+        <GoogleApiWrapper />
       </div>
     );
   }
