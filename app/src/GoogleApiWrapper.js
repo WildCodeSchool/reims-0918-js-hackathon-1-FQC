@@ -8,29 +8,28 @@ const style = {
   height: "100%"
 };
 
-
 class MapContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
       latitude: "",
       longitude: ""
-    }
+    };
     this.getLatitude = this.getLatitude.bind(this);
   }
   componentDidMount() {
-    navigator.geolocation.watchPosition(this.getLatitude)
+    navigator.geolocation.watchPosition(this.getLatitude);
   }
 
-  getLatitude = (position) => {
+  getLatitude = position => {
     this.setState({
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
-    })
-  }
+    });
+  };
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -46,12 +45,11 @@ class MapContainer extends Component {
         activeMarker: null
       });
     }
-  }
+  };
 
   render() {
     return (
       <div>
-
         <Map
           google={this.props.google}
           style={style}
@@ -64,7 +62,6 @@ class MapContainer extends Component {
         >
           <Marker
             name={"Current location"}
-
             position={{ lat: this.state.latitude, lng: this.state.longitude }}
             icon={{
               url: "./img/pumpkin.png",
@@ -133,7 +130,9 @@ class MapContainer extends Component {
           >
             <div>
               <h3>{this.state.selectedPlace.name}</h3>
-              <p className="m-0">{this.state.selectedPlace.adresse}</p>
+              <p style={{ fontSize: "1rem" }} className="m-0">
+                {this.state.selectedPlace.adresse}
+              </p>
             </div>
           </InfoWindow>
           <InfoWindow onClose={this.onInfoWindowClose}>
