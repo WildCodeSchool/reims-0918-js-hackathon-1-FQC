@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import "./BackgroundAnimate.css";
 import GoogleApiWrapper from "./GoogleApiWrapper";
-import { Button, Container, Row, Col } from "reactstrap";
 
 class App extends Component {
   constructor(props) {
@@ -106,9 +105,12 @@ class App extends Component {
             <a
               className="toto"
               onClick={() => this.handleDisplayMap(this.state.currentPage)}
-              color="primary"
             >
-              <h1>WILD CANDY HUNT</h1>
+              <h1>
+                WILD CANDY HUNT
+                <br />
+                <p>Que la chasse commence !</p>
+              </h1>
             </a>
           </div>
         )}
