@@ -3,20 +3,14 @@ import { Container, Row, Col } from "reactstrap";
 import "./App.css";
 import "./BackgroundAnimate.css";
 import GoogleApiWrapper from "./GoogleApiWrapper";
-import Inventaire from "./inventaire";
 
-const candyToList = candy => {
-  return {
-    image: candy.image_url,
-    name: candy.product_name
-  }
-}
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      candysList: [],
+
       currentPage: false
     };
     this.handleDisplayMap = this.handleDisplayMap.bind(this);
@@ -25,20 +19,11 @@ class App extends Component {
     this.setState({ currentPage: true });
   }
 
-  componentDidMount() {
-    fetch(`https://fr-en.openfoodfacts.org/category/candies.json`)
-      .then(results => results.json())
-      .then(data => {
-        for (let i=0; i<data.products.length; i++){
-        this.setState({
-          candysList: [...this.state.candysList, candyToList(data.products[i])]
-        });
-      }});
-  }
+
 
   render() {
     return (
-      <body>
+      <div>
         {!this.state.currentPage && (
           <div>
             <div className="spider_0">
@@ -128,6 +113,7 @@ class App extends Component {
                 WILD CANDY HUNT
                 <br />
                 <p>Que la chasse commence !</p>
+
               </h1>
             </a>
           </div>
@@ -135,18 +121,11 @@ class App extends Component {
         {this.state.currentPage && (
           <div className="App">
             <Container fluid>
-              <Row style={{ height: "100vh" }}>
-                <Col xs="9" style={{ paddingLeft: "0" }}>
-                  <GoogleApiWrapper />
-                </Col>
-                <Col xs="3"> 
-                <Inventaire candys={this.state.candysList} />
-                </Col>
-              </Row>
+              <GoogleApiWrapper />
             </Container>
           </div>
         )}
-      </body>
+      </div>
     );
   }
 }
