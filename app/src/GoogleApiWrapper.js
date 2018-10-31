@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import "./GoogleApiWrapper.css";
-import { Col, Row } from "reactstrap"
+import { Col, Row } from "reactstrap";
 import Inventaire from "./inventaire";
 
 const style = {
@@ -13,8 +13,8 @@ const candyToList = candy => {
   return {
     image: candy.image_url,
     name: candy.product_name
-  }
-}
+  };
+};
 
 class MapContainer extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class MapContainer extends Component {
       MapLongitude: "",
       candysList: [],
       Inventory: []
-    }
+    };
     this.getLatitude = this.getLatitude.bind(this);
     // this.addToInventory = this.addToInventory.bind(this);
   }
@@ -40,7 +40,10 @@ class MapContainer extends Component {
       .then(data => {
         for (let i = 0; i < data.products.length; i++) {
           this.setState({
-            candysList: [...this.state.candysList, candyToList(data.products[i])]
+            candysList: [
+              ...this.state.candysList,
+              candyToList(data.products[i])
+            ]
           });
         }
       });
@@ -64,7 +67,7 @@ class MapContainer extends Component {
       activeMarker: marker,
       showingInfoWindow: true,
       Inventory: [...this.state.Inventory, this.state.candysList[0]]
-    })
+    });
   };
 
   onMapClicked = props => {
@@ -86,7 +89,6 @@ class MapContainer extends Component {
   render() {
     return (
       <Row style={{ height: "100vh" }}>
-
         <Col xs="9" style={{ paddingLeft: "0" }}>
           <Map
             google={this.props.google}
@@ -112,13 +114,21 @@ class MapContainer extends Component {
               key="0"
               name={"Gare de Reims"}
               adresse={"Place de la gare"}
-              bonbon={this.state.candysList[0] ? this.state.candysList[0].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
-              mapCenter={{
-                lat: this.state.latitude,
-                lng: this.state.longitude
-              }}
+              bonbon={
+                this.state.candysList[0] ? this.state.candysList[0].image : ""
+              }
+              onClick={
+                (this.state.latitude - 49.258919 <= 100 &&
+                  this.state.latitude - 49.258919 >= 0 &&
+                  this.state.longitude - 4.024525 <= 100 &&
+                  this.state.longitude - 4.024525 >= 0) ||
+                (this.state.latitude - 49.258919 >= -100 &&
+                  this.state.latitude - 49.258919 <= 0 &&
+                  this.state.longitude - 4.024525 >= -100 &&
+                  this.state.longitude - 4.024525 <= 0)
+                  ? this.onMarkerClick
+                  : ""
+              }
               position={{ lat: 49.258919, lng: 4.024525 }}
               icon={{
                 url: "./img/candy.png",
@@ -130,9 +140,21 @@ class MapContainer extends Component {
               key="1"
               name={"Cathédrale Notre-Dame de Reims"}
               adresse={"Place du Cardinal Luçon"}
-              bonbon={this.state.candysList[1] ? this.state.candysList[1].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              bonbon={
+                this.state.candysList[1] ? this.state.candysList[1].image : ""
+              }
+              onClick={
+                (this.state.latitude - 49.253878 <= 100 &&
+                  this.state.latitude - 49.253878 >= 0 &&
+                  this.state.longitude - 4.034093 <= 100 &&
+                  this.state.longitude - 4.034093 >= 0) ||
+                (this.state.latitude - 49.253878 >= -100 &&
+                  this.state.latitude - 49.253878 <= 0 &&
+                  this.state.longitude - 4.034093 >= -100 &&
+                  this.state.longitude - 4.034093 <= 0)
+                  ? this.onMarkerClick
+                  : ""
+              }
               position={{ lat: 49.253878, lng: 4.034093 }}
               icon={{
                 url: "./img/candy.png",
@@ -144,9 +166,21 @@ class MapContainer extends Component {
               key="2"
               name={"Hôtel de ville"}
               adresse={"9 Place de l'Hôtel de ville"}
-              bonbon={this.state.candysList[2] ? this.state.candysList[2].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              bonbon={
+                this.state.candysList[2] ? this.state.candysList[2].image : ""
+              }
+              onClick={
+                (this.state.latitude - 49.258175 <= 100 &&
+                  this.state.latitude - 49.258175 >= 0 &&
+                  this.state.longitude - 4.032134 <= 100 &&
+                  this.state.longitude - 4.032134 >= 0) ||
+                (this.state.latitude - 49.258175 >= -100 &&
+                  this.state.latitude - 49.258175 <= 0 &&
+                  this.state.longitude - 4.032134 >= -100 &&
+                  this.state.longitude - 4.032134 <= 0)
+                  ? this.onMarkerClick
+                  : ""
+              }
               position={{ lat: 49.258175, lng: 4.032134 }}
               icon={{
                 url: "./img/candy.png",
@@ -158,8 +192,21 @@ class MapContainer extends Component {
               key="3"
               name={"Place Royale"}
               adresse={"5 Place Royale"}
-              bonbon={this.state.candysList[3] ? this.state.candysList[3].image : ""}
-              onClick={this.onMarkerClick}
+              bonbon={
+                this.state.candysList[3] ? this.state.candysList[3].image : ""
+              }
+              onClick={
+                (this.state.latitude - 49.255585 <= 100 &&
+                  this.state.latitude - 49.255585 >= 0 &&
+                  this.state.longitude - 4.034319 <= 100 &&
+                  this.state.longitude - 4.034319 >= 0) ||
+                (this.state.latitude - 49.255585 >= -100 &&
+                  this.state.latitude - 49.255585 <= 0 &&
+                  this.state.longitude - 4.034319 >= -100 &&
+                  this.state.longitude - 4.034319 <= 0)
+                  ? this.onMarkerClick
+                  : ""
+              }
               position={{ lat: 49.255585, lng: 4.034319 }}
               icon={{
                 url: "./img/candy.png",
@@ -171,9 +218,21 @@ class MapContainer extends Component {
               key="4"
               name={"Fontaine Subé"}
               adresse={"Place Drouet d'Erlon"}
-              bonbon={this.state.candysList[4] ? this.state.candysList[4].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              bonbon={
+                this.state.candysList[4] ? this.state.candysList[4].image : ""
+              }
+              onClick={
+                (this.state.latitude - 49.255147 <= 100 &&
+                  this.state.latitude - 49.255147 >= 0 &&
+                  this.state.longitude - 4.027244 <= 100 &&
+                  this.state.longitude - 4.027244 >= 0) ||
+                (this.state.latitude - 49.255147 >= -100 &&
+                  this.state.latitude - 49.255147 <= 0 &&
+                  this.state.longitude - 4.027244 >= -100 &&
+                  this.state.longitude - 4.027244 <= 0)
+                  ? this.onMarkerClick
+                  : ""
+              }
               position={{ lat: 49.255147, lng: 4.027244 }}
               icon={{
                 url: "./img/candy.png",
@@ -188,10 +247,12 @@ class MapContainer extends Component {
               <div>
                 <h3>{this.state.selectedPlace.name}</h3>
                 <p style={{ fontSize: "1rem" }} className="m-0">
-                  {this.state.selectedPlace.adresse}</p>
+                  {this.state.selectedPlace.adresse}
+                </p>
 
-                <button onClick={() => this.addToInventory} ><img src={this.state.selectedPlace.bonbon} /></button>
-
+                <button onClick={() => this.addToInventory}>
+                  <img src={this.state.selectedPlace.bonbon} />
+                </button>
               </div>
             </InfoWindow>
             <InfoWindow onClose={this.onInfoWindowClose}>
@@ -200,11 +261,12 @@ class MapContainer extends Component {
               </div>
             </InfoWindow>
           </Map>
-        </Col>￼￼￼￼￼￼
+        </Col>
+        ￼￼￼￼￼￼
         <Col xs="3">
           <Inventaire candys={this.state.Inventory} />
         </Col>
-      </Row >
+      </Row>
     );
   }
 }
