@@ -153,7 +153,6 @@ class MapContainer extends Component {
             </div>
           </InfoWindow>
         </Map>
-        <Inventaire />
       </div>
     );
   }

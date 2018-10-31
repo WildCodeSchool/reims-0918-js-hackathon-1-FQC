@@ -5,6 +5,13 @@ import "./BackgroundAnimate.css";
 import GoogleApiWrapper from "./GoogleApiWrapper";
 import Inventaire from "./inventaire";
 
+const candyToList = candy => {
+  return {
+    image: candy.image_url,
+    name: candy.product_name
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,13 +26,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://fr-en.openfoodfacts.org/category/bonbons.json`)
+    fetch(`https://fr-en.openfoodfacts.org/category/candies.json`)
       .then(results => results.json())
       .then(data => {
+        for (let i=0; i<data.products.length; i++){
         this.setState({
-          candysList: data.products
+          candysList: [...this.state.candysList, candyToList(data.products[i])]
         });
-      });
+      }});
   }
 
   render() {
@@ -131,8 +139,8 @@ class App extends Component {
                 <Col xs="9" style={{ paddingLeft: "0" }}>
                   <GoogleApiWrapper />
                 </Col>
-                <Col xs="3">
-                  <Inventaire />
+                <Col xs="3"> 
+                <Inventaire candys={this.state.candysList} />
                 </Col>
               </Row>
             </Container>
