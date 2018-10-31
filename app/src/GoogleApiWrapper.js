@@ -28,10 +28,11 @@ class MapContainer extends Component {
       MapLatitude: "",
       MapLongitude: "",
       candysList: [],
-      Inventory: []
+      inventory: []
     };
     this.getLatitude = this.getLatitude.bind(this);
-    // this.addToInventory = this.addToInventory.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.addToInventory = this.addToInventory.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +60,7 @@ class MapContainer extends Component {
     });
   };
 
-  onMarkerClick = (props, marker, target) => {
+  onMarkerClick = (props, marker) => {
     this.setState({
       MapLatitude: props.map.center.lat(),
       MapLongitude: props.map.center.lng(),
@@ -79,12 +80,19 @@ class MapContainer extends Component {
     }
   };
 
-  // addToInventory = (target) => {
-  // this.setState({
-  //   inventory: { ...this.state.inventory, target }
-  // })
-  //   console.log("hello")
-  // }
+  addToInventory = bonbon => {
+    let present = 0;
+    this.state.inventory.map(item => {
+      if (item.name.includes(bonbon.name)) {
+        present++;
+      }
+    });
+    if (!present) {
+      this.setState({
+        inventory: [...this.state.inventory, bonbon]
+      });
+    }
+  };
 
   render() {
     return (
@@ -126,7 +134,7 @@ class MapContainer extends Component {
                   this.state.latitude - 49.258919 <= 0 &&
                   this.state.longitude - 4.024525 >= -100 &&
                   this.state.longitude - 4.024525 <= 0)
-                  ? this.onMarkerClick
+                  ? () => this.addToInventory(this.state.candysList[0])
                   : ""
               }
               position={{ lat: 49.258919, lng: 4.024525 }}
@@ -152,8 +160,9 @@ class MapContainer extends Component {
                   this.state.latitude - 49.253878 <= 0 &&
                   this.state.longitude - 4.034093 >= -100 &&
                   this.state.longitude - 4.034093 <= 0)
-                  ? this.onMarkerClick
-                  : ""
+                  ? (this.onMarkerClick,
+                    () => this.addToInventory(this.state.candysList[1]))
+                  : console.log("trop loin")
               }
               position={{ lat: 49.253878, lng: 4.034093 }}
               icon={{
@@ -178,8 +187,9 @@ class MapContainer extends Component {
                   this.state.latitude - 49.258175 <= 0 &&
                   this.state.longitude - 4.032134 >= -100 &&
                   this.state.longitude - 4.032134 <= 0)
-                  ? this.onMarkerClick
-                  : ""
+                  ? (this.onMarkerClick,
+                    () => this.addToInventory(this.state.candysList[2]))
+                  : console.log("trop loin")
               }
               position={{ lat: 49.258175, lng: 4.032134 }}
               icon={{
@@ -204,8 +214,9 @@ class MapContainer extends Component {
                   this.state.latitude - 49.255585 <= 0 &&
                   this.state.longitude - 4.034319 >= -100 &&
                   this.state.longitude - 4.034319 <= 0)
-                  ? this.onMarkerClick
-                  : ""
+                  ? (this.onMarkerClick,
+                    () => this.addToInventory(this.state.candysList[3]))
+                  : console.log("trop loin")
               }
               position={{ lat: 49.255585, lng: 4.034319 }}
               icon={{
@@ -230,8 +241,9 @@ class MapContainer extends Component {
                   this.state.latitude - 49.255147 <= 0 &&
                   this.state.longitude - 4.027244 >= -100 &&
                   this.state.longitude - 4.027244 <= 0)
-                  ? this.onMarkerClick
-                  : ""
+                  ? (this.onMarkerClick,
+                    () => this.addToInventory(this.state.candysList[4]))
+                  : console.log("trop loin")
               }
               position={{ lat: 49.255147, lng: 4.027244 }}
               icon={{
@@ -264,7 +276,7 @@ class MapContainer extends Component {
         </Col>
         ￼￼￼￼￼￼
         <Col xs="3">
-          <Inventaire candys={this.state.Inventory} />
+          <Inventaire candys={this.state.inventory} />
         </Col>
       </Row>
     );

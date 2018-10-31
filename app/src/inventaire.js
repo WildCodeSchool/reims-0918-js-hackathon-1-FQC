@@ -4,25 +4,38 @@ import {
   Card,
   CardImg,
   CardBody,
-  CardTitle
+  CardTitle,
+  Container,
+  Row,
+  Col
 } from "reactstrap";
+import { Scrollbars } from "react-custom-scrollbars";
 
-const Inventaire = ({ candys }) => {
+const Inventaire = ({ candys, index }) => {
   return (
     <div>
-      <h2>Mes Bonbons</h2>
-      {candys ? (
-        candys.map((candy, index) => (
-          <Card key={index}>
-            <CardImg src={candy.image} alt="Card image cap" />
-            <CardBody>
-              <CardTitle>{candy.name}</CardTitle>
-            </CardBody>
-          </Card>
-        ))
-      ) : ""}
-
-
+      <Scrollbars style={{ width: 300, height: 700 }}>
+        <Container>
+          <h2>Mes Bonbons</h2>
+          <Row>
+            {/* {console.log("candys", candys)} */}
+            {candys.map(candy => (
+              <Col xs="6">
+                <Card style={{ width: 140, height: 250 }} key={index}>
+                  <CardImg
+                    style={{ width: 140, height: 180 }}
+                    src={candy.image}
+                    alt="Card image cap"
+                  />
+                  <CardBody>
+                    <CardTitle>{candy.name}</CardTitle>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </Scrollbars>
     </div>
   );
 };
