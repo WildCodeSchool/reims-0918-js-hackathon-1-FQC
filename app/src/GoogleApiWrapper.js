@@ -28,10 +28,11 @@ class MapContainer extends Component {
       MapLatitude: "",
       MapLongitude: "",
       candysList: [],
-      Inventory: []
+      inventory: []
     }
     this.getLatitude = this.getLatitude.bind(this);
-    // this.addToInventory = this.addToInventory.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.addToInventory = this.addToInventory.bind(this);
   }
 
   componentDidMount() {
@@ -56,14 +57,13 @@ class MapContainer extends Component {
     });
   };
 
-  onMarkerClick = (props, marker, target) => {
+  onMarkerClick = (props, marker) => {
     this.setState({
       MapLatitude: props.map.center.lat(),
       MapLongitude: props.map.center.lng(),
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true,
-      Inventory: [...this.state.Inventory, this.state.candysList[0]]
     })
   };
 
@@ -76,12 +76,21 @@ class MapContainer extends Component {
     }
   };
 
-  // addToInventory = (target) => {
-  // this.setState({
-  //   inventory: { ...this.state.inventory, target }
-  // })
-  //   console.log("hello")
-  // }
+  addToInventory = (bonbon) => {
+    let present = 0
+    this.state.inventory.map(item => {
+      if (item.name.includes(bonbon.name)) {
+        present++
+      }
+    })
+    if (!present) {
+      this.setState({
+        inventory: [...this.state.inventory, bonbon]
+      })
+    }
+
+  }
+
 
   render() {
     return (
@@ -113,12 +122,7 @@ class MapContainer extends Component {
               name={"Gare de Reims"}
               adresse={"Place de la gare"}
               bonbon={this.state.candysList[0] ? this.state.candysList[0].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
-              mapCenter={{
-                lat: this.state.latitude,
-                lng: this.state.longitude
-              }}
+              onClick={() => this.addToInventory(this.state.candysList[0])}
               position={{ lat: 49.258919, lng: 4.024525 }}
               icon={{
                 url: "./img/candy.png",
@@ -131,8 +135,7 @@ class MapContainer extends Component {
               name={"Cathédrale Notre-Dame de Reims"}
               adresse={"Place du Cardinal Luçon"}
               bonbon={this.state.candysList[1] ? this.state.candysList[1].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              onClick={(this.onMarkerClick, () => this.addToInventory(this.state.candysList[1]))}
               position={{ lat: 49.253878, lng: 4.034093 }}
               icon={{
                 url: "./img/candy.png",
@@ -145,8 +148,7 @@ class MapContainer extends Component {
               name={"Hôtel de ville"}
               adresse={"9 Place de l'Hôtel de ville"}
               bonbon={this.state.candysList[2] ? this.state.candysList[2].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              onClick={(this.onMarkerClick, () => this.addToInventory(this.state.candysList[2]))}
               position={{ lat: 49.258175, lng: 4.032134 }}
               icon={{
                 url: "./img/candy.png",
@@ -159,7 +161,7 @@ class MapContainer extends Component {
               name={"Place Royale"}
               adresse={"5 Place Royale"}
               bonbon={this.state.candysList[3] ? this.state.candysList[3].image : ""}
-              onClick={this.onMarkerClick}
+              onClick={(this.onMarkerClick, () => this.addToInventory(this.state.candysList[3]))}
               position={{ lat: 49.255585, lng: 4.034319 }}
               icon={{
                 url: "./img/candy.png",
@@ -172,8 +174,7 @@ class MapContainer extends Component {
               name={"Fontaine Subé"}
               adresse={"Place Drouet d'Erlon"}
               bonbon={this.state.candysList[4] ? this.state.candysList[4].image : ""}
-              onClick={this.onMarkerClick}
-              onClick={this.onMarkerClick}
+              onClick={(this.onMarkerClick, () => this.addToInventory(this.state.candysList[4]))}
               position={{ lat: 49.255147, lng: 4.027244 }}
               icon={{
                 url: "./img/candy.png",
@@ -202,7 +203,7 @@ class MapContainer extends Component {
           </Map>
         </Col>￼￼￼￼￼￼
         <Col xs="3">
-          <Inventaire candys={this.state.Inventory} />
+          <Inventaire candys={this.state.inventory} />
         </Col>
       </Row >
     );
