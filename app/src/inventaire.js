@@ -11,7 +11,7 @@ import {
 } from "reactstrap";
 import { Scrollbars } from "react-custom-scrollbars";
 
-const Inventaire = ({ candys, index }) => {
+const Inventaire = ({ candys, index, props }) => {
   return (
     <div>
       <Scrollbars style={{ width: 300, height: 700 }}>
@@ -21,7 +21,7 @@ const Inventaire = ({ candys, index }) => {
             {/* {console.log("candys", candys)} */}
             {candys.map(candy => (
               <Col xs="6">
-                <Card style={{ width: 140, height: 250 }} key={index}>
+                <Card className="cursor" onClick={() => {props.candyToModal({...props})}} style={{ width: 140, height: 300 }} key={index}>
                   <CardImg
                     style={{ width: 140, height: 180 }}
                     src={candy.image}

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 import "./App.css";
 import "./BackgroundAnimate.css";
 import GoogleApiWrapper from "./GoogleApiWrapper";
-
 
 
 class App extends Component {
