@@ -19,9 +19,9 @@ const Inventaire = ({ candys, index }) => {
           <h2>Mes Bonbons</h2>
           <Row>
             {/* {console.log("candys", candys)} */}
-            {candys.map(candy => (
-              <Col xs="6">
-                <Card style={{ width: 140, height: 250 }} key={index}>
+            {candys.map((candy, index) => (
+              <Col xs="6" key={index}>
+                <Card style={{ width: 140, height: 250 }}>
                   <CardImg
                     style={{ width: 140, height: 180 }}
                     src={candy.image}

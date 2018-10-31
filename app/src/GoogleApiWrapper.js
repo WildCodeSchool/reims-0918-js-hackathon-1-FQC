@@ -126,16 +126,16 @@ class MapContainer extends Component {
                 this.state.candysList[0] ? this.state.candysList[0].image : ""
               }
               onClick={
-                (this.state.latitude - 49.258919 <= 100 &&
+                (this.state.latitude - 49.258919 <= 0.000010 &&
                   this.state.latitude - 49.258919 >= 0 &&
-                  this.state.longitude - 4.024525 <= 100 &&
+                  this.state.longitude - 4.024525 <= 0.000010 &&
                   this.state.longitude - 4.024525 >= 0) ||
-                (this.state.latitude - 49.258919 >= -100 &&
-                  this.state.latitude - 49.258919 <= 0 &&
-                  this.state.longitude - 4.024525 >= -100 &&
-                  this.state.longitude - 4.024525 <= 0)
+                  (this.state.latitude - 49.258919 >= -0.000010 &&
+                    this.state.latitude - 49.258919 <= 0 &&
+                    this.state.longitude - 4.024525 >= -0.000010 &&
+                    this.state.longitude - 4.024525 <= 0)
                   ? () => this.addToInventory(this.state.candysList[0])
-                  : ""
+                  : () => console.log('Trop loin')
               }
               position={{ lat: 49.258919, lng: 4.024525 }}
               icon={{
@@ -152,17 +152,16 @@ class MapContainer extends Component {
                 this.state.candysList[1] ? this.state.candysList[1].image : ""
               }
               onClick={
-                (this.state.latitude - 49.253878 <= 100 &&
+                (this.state.latitude - 49.253878 <= 0.000010 &&
                   this.state.latitude - 49.253878 >= 0 &&
-                  this.state.longitude - 4.034093 <= 100 &&
+                  this.state.longitude - 4.034093 <= 0.000010 &&
                   this.state.longitude - 4.034093 >= 0) ||
-                (this.state.latitude - 49.253878 >= -100 &&
-                  this.state.latitude - 49.253878 <= 0 &&
-                  this.state.longitude - 4.034093 >= -100 &&
-                  this.state.longitude - 4.034093 <= 0)
-                  ? (this.onMarkerClick,
-                    () => this.addToInventory(this.state.candysList[1]))
-                  : console.log("trop loin")
+                  (this.state.latitude - 49.253878 >= -0.000010 &&
+                    this.state.latitude - 49.253878 <= 0 &&
+                    this.state.longitude - 4.034093 >= -0.000010 &&
+                    this.state.longitude - 4.034093 <= 0)
+                  ? () => this.addToInventory(this.state.candysList[1])
+                  : () => console.log('Trop loin')
               }
               position={{ lat: 49.253878, lng: 4.034093 }}
               icon={{
@@ -179,17 +178,16 @@ class MapContainer extends Component {
                 this.state.candysList[2] ? this.state.candysList[2].image : ""
               }
               onClick={
-                (this.state.latitude - 49.258175 <= 100 &&
+                (this.state.latitude - 49.258175 <= 0.000010 &&
                   this.state.latitude - 49.258175 >= 0 &&
-                  this.state.longitude - 4.032134 <= 100 &&
+                  this.state.longitude - 4.032134 <= 0.000010 &&
                   this.state.longitude - 4.032134 >= 0) ||
-                (this.state.latitude - 49.258175 >= -100 &&
-                  this.state.latitude - 49.258175 <= 0 &&
-                  this.state.longitude - 4.032134 >= -100 &&
-                  this.state.longitude - 4.032134 <= 0)
-                  ? (this.onMarkerClick,
-                    () => this.addToInventory(this.state.candysList[2]))
-                  : console.log("trop loin")
+                  (this.state.latitude - 49.258175 >= -0.000010 &&
+                    this.state.latitude - 49.258175 <= 0 &&
+                    this.state.longitude - 4.032134 >= -0.000010 &&
+                    this.state.longitude - 4.032134 <= 0)
+                  ? () => this.addToInventory(this.state.candysList[2])
+                  : () => console.log('Trop loin')
               }
               position={{ lat: 49.258175, lng: 4.032134 }}
               icon={{
@@ -206,17 +204,16 @@ class MapContainer extends Component {
                 this.state.candysList[3] ? this.state.candysList[3].image : ""
               }
               onClick={
-                (this.state.latitude - 49.255585 <= 100 &&
+                (this.state.latitude - 49.255585 <= 0.000010 &&
                   this.state.latitude - 49.255585 >= 0 &&
-                  this.state.longitude - 4.034319 <= 100 &&
+                  this.state.longitude - 4.034319 <= 0.000010 &&
                   this.state.longitude - 4.034319 >= 0) ||
-                (this.state.latitude - 49.255585 >= -100 &&
-                  this.state.latitude - 49.255585 <= 0 &&
-                  this.state.longitude - 4.034319 >= -100 &&
-                  this.state.longitude - 4.034319 <= 0)
-                  ? (this.onMarkerClick,
-                    () => this.addToInventory(this.state.candysList[3]))
-                  : console.log("trop loin")
+                  (this.state.latitude - 49.255585 >= -0.000010 &&
+                    this.state.latitude - 49.255585 <= 0 &&
+                    this.state.longitude - 4.034319 >= -0.000010 &&
+                    this.state.longitude - 4.034319 <= 0)
+                  ? () => this.addToInventory(this.state.candysList[3])
+                  : () => console.log('Trop loin')
               }
               position={{ lat: 49.255585, lng: 4.034319 }}
               icon={{
@@ -233,17 +230,16 @@ class MapContainer extends Component {
                 this.state.candysList[4] ? this.state.candysList[4].image : ""
               }
               onClick={
-                (this.state.latitude - 49.255147 <= 100 &&
+                (this.state.latitude - 49.255147 <= 0.000010 &&
                   this.state.latitude - 49.255147 >= 0 &&
-                  this.state.longitude - 4.027244 <= 100 &&
+                  this.state.longitude - 4.027244 <= 0.000010 &&
                   this.state.longitude - 4.027244 >= 0) ||
-                (this.state.latitude - 49.255147 >= -100 &&
-                  this.state.latitude - 49.255147 <= 0 &&
-                  this.state.longitude - 4.027244 >= -100 &&
-                  this.state.longitude - 4.027244 <= 0)
-                  ? (this.onMarkerClick,
-                    () => this.addToInventory(this.state.candysList[4]))
-                  : console.log("trop loin")
+                  (this.state.latitude - 49.255147 >= -0.000010 &&
+                    this.state.latitude - 49.255147 <= 0 &&
+                    this.state.longitude - 4.027244 >= -0.000010 &&
+                    this.state.longitude - 4.027244 <= 0)
+                  ? () => this.addToInventory(this.state.candysList[4])
+                  : () => console.log('Trop loin')
               }
               position={{ lat: 49.255147, lng: 4.027244 }}
               icon={{
