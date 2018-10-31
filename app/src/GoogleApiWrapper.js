@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
-import Inventaire from "./inventaire";
 import "./GoogleApiWrapper.css";
 
 const style = {
